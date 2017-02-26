@@ -1,4 +1,4 @@
-package br.com.energia.dao;
+package br.com.energia.services;
 
 import br.com.energia.dominio.Processo;
 import br.com.energia.interfaces.RepositorioProcessos;
@@ -32,5 +32,17 @@ public class ControladorSIAPJ implements RepositorioProcessos, ServicoEmail, Val
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	private Processo checkProcesso(Processo processo){
+		
+		return processo;
+	}
+	
+	private boolean persistprocesso(Processo processo){
+		
+		return false;
+	}
+	
+	private void sendInfoByEmail(Processo processo, boolean statusProcesso){}
 
 }
