@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 
+import br.com.energia.dao.SiapjDAO;
 import br.com.energia.dominio.Processo;
 
 
@@ -24,6 +25,10 @@ public class SIAPJController {
 		
 		
 		if (!file.isEmpty()) {
+			
+			SiapjDAO dao = new SiapjDAO();
+			
+			
 			//Pega o nome do arquivo para verificar se é PDF
 			String nome = file.getOriginalFilename();
 			
@@ -33,8 +38,17 @@ public class SIAPJController {
 		
 			model.addAttribute("pdf", extensao);
 			
+			processo.setConteudo(extensao);
+			
+			try {
+				dao.adiciona(processo);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			
 		}else{
-			model.addAttribute("erro", "Arquivo vazio!");
+			model.addAttribute("pdf", "Arquivo vazio!");
 		}
 		
 		return "success";

@@ -9,19 +9,9 @@
 </head>
 <body>
 
-
 <div>
-Cadastro efetuado com sucesso senhor(a) ${retorno}
+${pdf} 
 </div>
-
-<div>
-${pdf} no formato correto!
-</div>
-
-<div>
-${erro}
-</div>
-
 
 </body>
 </html>
