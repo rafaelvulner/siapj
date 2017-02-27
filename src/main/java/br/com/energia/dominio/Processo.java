@@ -1,10 +1,15 @@
 package br.com.energia.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-
+@Entity
 public class Processo {
 
-
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomeReclamante;
     private String telefone;

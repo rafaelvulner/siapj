@@ -1,5 +1,6 @@
 package br.com.energia.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,10 +9,14 @@ import org.springframework.ui.Model;
 
 import br.com.energia.dao.SiapjDAO;
 import br.com.energia.dominio.Processo;
+import br.com.energia.services.SiapjService;
 
 
 @Controller
 public class SIAPJController {
+	
+	@Autowired
+	private SiapjService service;
 	
 	@RequestMapping("/index")
 	public String index(){
@@ -24,9 +29,7 @@ public class SIAPJController {
 		
 		
 		
-		if (!file.isEmpty()) {
-			
-			SiapjDAO dao = new SiapjDAO();
+		if (!file.isEmpty()) {	
 			
 			
 			//Pega o nome do arquivo para verificar se é PDF
@@ -41,7 +44,7 @@ public class SIAPJController {
 			processo.setConteudo(extensao);
 			
 			try {
-				dao.adiciona(processo);
+				service.salvar(processo);
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
