@@ -1,39 +1,25 @@
-
 package br.com.energia.dao;
 
-import br.com.energia.conexao.Conexao;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
 import br.com.energia.dominio.Processo;
+import br.com.energia.services.SiapjRepository;
 
-import java.sql.SQLException;
-
-
-import java.sql.PreparedStatement;
-
-/**
- *
- * @author Rafael Monteiro
- */
+@Service
+@Transactional
 public class SiapjDAO {
-    
-	  public void adiciona(Processo processo) throws SQLException{
-	        
-	        Conexao conn = new Conexao();
-	        
-	        String sql = "insert into processo(nomeReclamante, telefone, email, conteudo) values (?,?,?,?)";
-	        
-	        PreparedStatement ps = conn.getConexao().prepareStatement(sql);
-	        
-	        ps.setString(1, processo.getNomeReclamante());
-	        ps.setString(2, processo.getTelefone());
-	        ps.setString(3, processo.getEmail());
-	        ps.setString(4, processo.getConteudo());
-	        
-	        ps.execute();
-	        
-	        
-	        
-	        
-	    
-	    }
-    
+	
+	private final SiapjRepository repository;
+
+	public SiapjDAO(SiapjRepository repository) {
+		this.repository = repository;
+	}
+	
+	public void salvar(Processo processo){
+		repository.save(processo);
+		
+	}
+
 }

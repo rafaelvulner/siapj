@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 
+
 import br.com.energia.dao.SiapjDAO;
 import br.com.energia.dominio.Processo;
-import br.com.energia.services.SiapjService;
 
 
 @Controller
 public class SIAPJController {
 	
 	@Autowired
-	private SiapjService service;
+	private SiapjDAO service;
 	
 	@RequestMapping("/index")
 	public String index(){

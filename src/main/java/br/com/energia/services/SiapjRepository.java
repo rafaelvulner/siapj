@@ -1,4 +1,4 @@
-package br.com.energia.dao;
+package br.com.energia.services;
 
 import org.springframework.data.repository.CrudRepository;
 
