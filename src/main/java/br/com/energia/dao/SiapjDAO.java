@@ -1,5 +1,7 @@
 package br.com.energia.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +21,12 @@ public class SiapjDAO {
 	
 	public void salvar(Processo processo){
 		repository.save(processo);
+		
+	}
+	
+	public List<Processo> retornarProcesso(){
+		
+		return (List<Processo>) repository.findAll();
 		
 	}
 
